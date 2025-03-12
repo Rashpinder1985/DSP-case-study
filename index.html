@@ -65,19 +65,26 @@
     </div>
     
     
-    <div class="question">
-        <h3>3. FFT-Based Convolution for Real-Time Audio Filtering</h3>
-        <p><strong>Scenario:</strong> Implement fast convolution for real-time audio filtering.</p>
-        <p><strong>Specifications:</strong></p>
+      <div class="question">
+        <h3>3. FFT-Based Circular Convolution for Audio Filtering</h3>
+        <p><strong>Scenario:</strong> You need to apply fast convolution using FFT to filter an audio signal. This approach is widely used in real-time applications where computational efficiency is crucial.</p>
+        <p><strong>Given Data:</strong></p>
         <ul>
-            <li>Sampling Rate: 44.1 kHz</li>
-            <li>Frame Size: 1024 samples</li>
-            <li>Low-pass FIR Filter: 51 coefficients</li>
+            <li>Sampling Rate: 8 kHz</li>
+            <li>Frame Size: 16 samples</li>
+            <li>Low-pass FIR Filter: 7 coefficients</li>
+            <li>Impulse Response: h = [0.2, 0.4, 0.6, 0.8, 0.6, 0.4, 0.2]</li>
+            <li>Input Signal: x = [1, 2, 3, 4, 3, 2, 1, 0, -1, -2, -3, -4, -3, -2, -1, 0]</li>
+        </ul>
+        <p><strong>Tasks:</strong></p>
+        <ul>
+            <li>(a) Perform circular convolution manually using the given data.</li>
+            <li>(b) Implement FFT-based convolution in MATLAB or Python.</li>
+            <li>(c) Compare the results and discuss computational benefits of FFT-based convolution.</li>
         </ul>
         <button onclick="toggleHint('hint3')">Show Hint</button>
-        <p class="hint" id="hint3">Hint: FFT reduces complexity from O(N²) to O(N log N).</p>
+        <p class="hint" id="hint3">Hint: Use FFT to transform both signals, multiply them, then apply IFFT to get the result.</p>
     </div>
-    
     <div class="question">
         <h3>4. Resampling and Frequency Response of Digital Filters</h3>
         <p><strong>Scenario:</strong> Downsample a signal and analyze its frequency response.</p>
