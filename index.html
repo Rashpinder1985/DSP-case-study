@@ -42,19 +42,28 @@
         <p class="hint" id="hint1">Hint: Start by plotting the raw ECG signal with noise before applying filtering and FFT.</p>
     </div>
     
-    <div class="question">
-        <h3>2. FIR Filter Design using Window Method</h3>
-        <p><strong>Scenario:</strong> Design a low-pass FIR filter for speech processing.</p>
-        <p><strong>Specifications:</strong></p>
+     <div class="question">
+        <h3>2. Low-Pass FIR Filter Design for Speech Processing</h3>
+        <p><strong>Scenario:</strong> Speech signals require filtering to remove high-frequency noise and retain intelligibility. A low-pass FIR filter is designed to enhance the quality of speech recordings.</p>
+        <p><strong>Problem Statement:</strong> You are given a sampled speech signal with a maximum frequency of interest at 4 kHz. Your task is to design a low-pass FIR filter to preserve the speech components while eliminating unwanted higher frequencies.</p>
+        <p><strong>Filter Specifications:</strong></p>
         <ul>
             <li>Cutoff Frequency: 4 kHz</li>
             <li>Sampling Frequency: 16 kHz</li>
             <li>Filter Order: 50</li>
-            <li>Window: Hamming</li>
+            <li>Window Function: Hamming</li>
+        </ul>
+        <p><strong>Tasks:</strong></p>
+        <ul>
+            <li>(a) Design and implement the FIR filter using MATLAB or Python.</li>
+            <li>(b) Compare the frequency response of Hamming and Blackman windows.</li>
+            <li>(c) Analyze the impact of windowing on filter performance.</li>
+            <li>(d) Apply the designed filter to a speech sample and evaluate the results.</li>
         </ul>
         <button onclick="toggleHint('hint2')">Show Hint</button>
-        <p class="hint" id="hint2">Hint: Compare Hamming and Blackman windows.</p>
+        <p class="hint" id="hint2">Hint: Compare Hamming and Blackman windows by plotting their magnitude responses.</p>
     </div>
+    
     
     <div class="question">
         <h3>3. FFT-Based Convolution for Real-Time Audio Filtering</h3>
