@@ -9,6 +9,7 @@
         .question { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
         .hint { display: none; color: blue; margin-top: 10px; }
         button { margin-top: 10px; cursor: pointer; }
+        code { background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
     </style>
 </head>
 <body>
@@ -16,64 +17,65 @@
     
     <div class="question">
         <h3>1. Fast Fourier Transform (FFT) Application</h3>
-        <p><strong>Scenario:</strong> You are given a noisy ECG signal and need to analyze its frequency content. </p>
-        <p><strong>(a)</strong> How would you use FFT to identify the dominant frequency components in the signal?</p>
-        <p><strong>(b)</strong> What preprocessing steps should be performed before applying FFT?</p>
-        <p><strong>(c)</strong> How can zero-padding affect the FFT resolution?</p>
+        <p><strong>Scenario:</strong> You are given a noisy ECG signal and need to analyze its frequency content.</p>
+        <p><strong>ECG Signal Model:</strong></p>
+        <p>The ECG waveform can be approximated using a sum of sinusoids:
+        <br><code>ECG(t) = A1*sin(2πf1t) + A2*sin(2πf2t) + ... + Noise</code></p>
+        <p><strong>Noise Range:</strong> Powerline interference (50/60 Hz), baseline wander (0.1-0.5 Hz), muscle noise (20-300 Hz).</p>
+        <p><strong>8-Point Radix-2 FFT Sample Frequencies:</strong> 0 Hz, 5 Hz, 10 Hz, 20 Hz, 40 Hz.</p>
+        <p><strong>Bandpass Filter Range:</strong> 0.5 Hz to 100 Hz.</p>
         <button onclick="toggleHint('hint1')">Show Hint</button>
-        <p class="hint" id="hint1">Hint: Consider removing noise using a bandpass filter and applying windowing before FFT.</p>
+        <p class="hint" id="hint1">Hint: Apply a bandpass filter before FFT.</p>
     </div>
     
     <div class="question">
         <h3>2. FIR Filter Design using Window Method</h3>
-        <p><strong>Scenario:</strong> You need to design a low-pass FIR filter for a speech processing application.</p>
-        <p><strong>(a)</strong> Which window function would be suitable for minimizing side lobes?</p>
-        <p><strong>(b)</strong> How does the window length affect the filter’s transition bandwidth?</p>
-        <p><strong>(c)</strong> Compare the performance of Hamming and Blackman windows.</p>
+        <p><strong>Scenario:</strong> Design a low-pass FIR filter for speech processing.</p>
+        <p><strong>Specifications:</strong></p>
+        <ul>
+            <li>Cutoff Frequency: 4 kHz</li>
+            <li>Sampling Frequency: 16 kHz</li>
+            <li>Filter Order: 50</li>
+            <li>Window: Hamming</li>
+        </ul>
         <button onclick="toggleHint('hint2')">Show Hint</button>
-        <p class="hint" id="hint2">Hint: The Blackman window has better stopband attenuation but a wider main lobe.</p>
+        <p class="hint" id="hint2">Hint: Compare Hamming and Blackman windows.</p>
     </div>
     
     <div class="question">
-        <h3>3. FFT-Based Convolution</h3>
-        <p><strong>Scenario:</strong> You are implementing fast convolution for real-time audio filtering.</p>
-        <p><strong>(a)</strong> Why is FFT-based convolution preferred over direct convolution?</p>
-        <p><strong>(b)</strong> What is the impact of circular convolution in FFT-based filtering?</p>
+        <h3>3. FFT-Based Convolution for Real-Time Audio Filtering</h3>
+        <p><strong>Scenario:</strong> Implement fast convolution for real-time audio filtering.</p>
+        <p><strong>Specifications:</strong></p>
+        <ul>
+            <li>Sampling Rate: 44.1 kHz</li>
+            <li>Frame Size: 1024 samples</li>
+            <li>Low-pass FIR Filter: 51 coefficients</li>
+        </ul>
         <button onclick="toggleHint('hint3')">Show Hint</button>
-        <p class="hint" id="hint3">Hint: FFT reduces complexity from O(N²) to O(N log N), making real-time filtering feasible.</p>
+        <p class="hint" id="hint3">Hint: FFT reduces complexity from O(N²) to O(N log N).</p>
     </div>
     
     <div class="question">
         <h3>4. Resampling and Frequency Response of Digital Filters</h3>
-        <p><strong>Scenario:</strong> You need to downsample a high-sampling-rate signal and analyze its frequency response after filtering.</p>
-        <p><strong>(a)</strong> What precautions should be taken when downsampling a signal?</p>
-        <p><strong>(b)</strong> How can an anti-aliasing filter help before resampling?</p>
-        <p><strong>(c)</strong> How do you analyze the frequency response of a digital filter?</p>
+        <p><strong>Scenario:</strong> Downsample a signal and analyze its frequency response.</p>
+        <p><strong>Given Data:</strong></p>
+        <ul>
+            <li>Original Sampling Rate: 48 kHz</li>
+            <li>Target Sampling Rate: 16 kHz</li>
+            <li>Downsampling Factor: 3</li>
+            <li>Signal Frequency Components: 500 Hz, 3 kHz, 8 kHz, 12 kHz</li>
+            <li>Anti-Aliasing Filter: Low-pass FIR filter, Cutoff 7 kHz</li>
+            <li>Filter Order: 60 (Hamming window)</li>
+        </ul>
         <button onclick="toggleHint('hint4')">Show Hint</button>
-        <p class="hint" id="hint4">Hint: Use a low-pass filter before downsampling and analyze frequency response using <code>freqz</code>.</p>
+        <p class="hint" id="hint4">Hint: Use <code>scipy.signal.resample</code> or MATLAB’s <code>resample()</code> function.</p>
     </div>
     
     <div class="question">
         <h3>5. FFT Resolution and Windowing</h3>
-        <p><strong>Scenario:</strong> You are analyzing a signal with closely spaced frequency components.</p>
-        <p><strong>(a)</strong> How does the FFT length affect frequency resolution?</p>
-        <p><strong>(b)</strong> Why is windowing important before FFT analysis?</p>
-        <p><strong>(c)</strong> Which window functions would be best suited for resolving closely spaced signals?</p>
+        <p><strong>Scenario:</strong> Analyze a signal with closely spaced frequencies.</p>
         <button onclick="toggleHint('hint5')">Show Hint</button>
-        <p class="hint" id="hint5">Hint: Longer FFTs improve resolution, and windows reduce spectral leakage.</p>
-    </div>
-    
-    <div class="question">
-        <h3>Hands-on Activity</h3>
-        <p><strong>Objective:</strong> Visualize FFT, FIR filter design, and resampling using MATLAB or Python based on students' expertise.</p>
-        <p><strong>Task:</strong> Implement an FFT-based frequency analysis, design an FIR filter using the window method, and resample a signal.</p>
-        <p><strong>Guidelines:</strong></p>
-        <ul>
-            <li>Use MATLAB’s <code>fft</code> function or Python’s <code>numpy.fft.fft</code> to analyze a test signal.</li>
-            <li>Design an FIR low-pass filter using MATLAB’s <code>fir1</code> or Python’s <code>scipy.signal.firwin</code>.</li>
-            <li>Perform downsampling using MATLAB’s <code>resample</code> or Python’s <code>scipy.signal.resample_poly</code>.</li>
-            <li>Plot the frequency response using <code>freqz</code> in MATLAB or <code>scipy.signal.freqz</code> in Python.</li>
-        </ul>
+        <p class="hint" id="hint5">Hint: Longer FFTs improve resolution.</p>
     </div>
     
     <script>
@@ -84,3 +86,4 @@
     </script>
 </body>
 </html>
+
