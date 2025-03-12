@@ -87,18 +87,26 @@
     </div>
     <div class="question">
         <h3>4. Resampling and Frequency Response of Digital Filters</h3>
-        <p><strong>Scenario:</strong> Downsample a signal and analyze its frequency response.</p>
+        <p><strong>Scenario:</strong> You need to downsample a signal and analyze how the frequency response changes after resampling.</p>
         <p><strong>Given Data:</strong></p>
         <ul>
+            <li>Analog Filter: Low-pass filter with a cutoff at 7 kHz</li>
             <li>Original Sampling Rate: 48 kHz</li>
             <li>Target Sampling Rate: 16 kHz</li>
             <li>Downsampling Factor: 3</li>
             <li>Signal Frequency Components: 500 Hz, 3 kHz, 8 kHz, 12 kHz</li>
-            <li>Anti-Aliasing Filter: Low-pass FIR filter, Cutoff 7 kHz</li>
+            <li>Anti-Aliasing Filter: Low-pass FIR filter with 7 kHz cutoff</li>
             <li>Filter Order: 60 (Hamming window)</li>
         </ul>
+        <p><strong>Tasks:</strong></p>
+        <ul>
+            <li>(a) Design and apply the anti-aliasing filter before downsampling.</li>
+            <li>(b) Perform downsampling by a factor of 3.</li>
+            <li>(c) Compute and visualize the frequency response before and after downsampling for N=9 samples.</li>
+            <li>(d) Discuss the effects of aliasing in the downsampled signal.</li>
+        </ul>
         <button onclick="toggleHint('hint4')">Show Hint</button>
-        <p class="hint" id="hint4">Hint: Use <code>scipy.signal.resample</code> or MATLAB’s <code>resample()</code> function.</p>
+        <p class="hint" id="hint4">Hint: Use FFT to analyze the frequency spectrum before and after downsampling.</p>
     </div>
     
     <div class="question">
