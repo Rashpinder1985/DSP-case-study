@@ -15,17 +15,31 @@
 <body>
     <h1>FFT & FIR Filter Design Case Studies</h1>
     
-    <div class="question">
-        <h3>1. Fast Fourier Transform (FFT) Application</h3>
-        <p><strong>Scenario:</strong> You are given a noisy ECG signal and need to analyze its frequency content.</p>
-        <p><strong>ECG Signal Model:</strong></p>
-        <p>The ECG waveform can be approximated using a sum of sinusoids:
-        <br><code>ECG(t) = A1*sin(2πf1t) + A2*sin(2πf2t) + ... + Noise</code></p>
-        <p><strong>Noise Range:</strong> Powerline interference (50/60 Hz), baseline wander (0.1-0.5 Hz), muscle noise (20-300 Hz).</p>
-        <p><strong>8-Point Radix-2 FFT Sample Frequencies:</strong> 0 Hz, 5 Hz, 10 Hz, 20 Hz, 40 Hz.</p>
-        <p><strong>Bandpass Filter Range:</strong> 0.5 Hz to 100 Hz.</p>
+      <div class="question">
+        <h3>1. Frequency Analysis of Noisy ECG Signal</h3>
+        <p><strong>Scenario:</strong> Electrocardiogram (ECG) signals are often contaminated by noise such as powerline interference, baseline wander, and muscle artifacts. To extract meaningful information, frequency analysis and filtering techniques are required.</p>
+        <p><strong>Problem Statement:</strong> You are given a noisy ECG signal that can be approximated as:</p>
+        <p><code>ECG(t) = A1*sin(2πf1t) + A2*sin(2πf2t) + ... + Noise</code></p>
+        <p><strong>Signal and Noise Components:</strong></p>
+        <ul>
+            <li>ECG Fundamental Frequencies: f1 = 1 Hz, f2 = 5 Hz, f3 = 10 Hz</li>
+            <li>Amplitudes: A1 = 1, A2 = 0.8, A3 = 0.5</li>
+            <li>Powerline Interference: 50 Hz (Amplitude = 0.3)</li>
+            <li>Baseline Wander: 0.1 - 0.5 Hz (Amplitude = 0.4)</li>
+            <li>Muscle Noise: 20 - 300 Hz (random high-frequency noise)</li>
+            <li>Sampling Rate: 500 Hz</li>
+            <li>Duration: 5 seconds</li>
+        </ul>
+        <p><strong>Tasks:</strong></p>
+        <ul>
+            <li>(a) Plot the noisy ECG signal using MATLAB or Python.</li>
+            <li>(b) Design a bandpass filter (0.5 Hz - 100 Hz) to remove noise components.</li>
+            <li>(c) Compute the 8-point Radix-2 FFT and analyze frequency components.</li>
+            <li>(d) Visualize and compare the frequency spectrum before and after filtering.</li>
+            <li>(e) Discuss the impact of filtering on signal quality.</li>
+        </ul>
         <button onclick="toggleHint('hint1')">Show Hint</button>
-        <p class="hint" id="hint1">Hint: Apply a bandpass filter before FFT.</p>
+        <p class="hint" id="hint1">Hint: Start by plotting the raw ECG signal with noise before applying filtering and FFT.</p>
     </div>
     
     <div class="question">
